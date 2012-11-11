@@ -1,5 +1,5 @@
-#/**********************************************************\ 
-# 
+#/**********************************************************\
+#
 # Auto-generated CMakeLists.txt for the fugaplug project
 #
 #\**********************************************************/
@@ -44,10 +44,10 @@ FIND_PACKAGE(LibXml2)
 #FIND_PACKAGE(libgstinterfaces-0.10.so)
 include(FindGStreamer.cmake)
 
-#link_directories(
-#    ${GSTREAMER_INCLUDE_DIRS}
-#    "/usr/include/libxml2/"
-#)
+link_directories(
+    ${GSTREAMER_INCLUDE_DIRS}
+    "/usr/include/libxml2/"
+)
 include_directories(
     ${GSTREAMER_INCLUDE_DIRS}
     "/usr/include/libxml2/"
