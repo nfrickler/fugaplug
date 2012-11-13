@@ -22,7 +22,7 @@ include_directories(${PLUGIN_INCLUDE_DIRS})
 SET_SOURCE_FILES_PROPERTIES(
     ${GENERATED}
     PROPERTIES
-        GENERATED 1
+	GENERATED 1
     )
 
 SOURCE_GROUP(Generated FILES
@@ -34,25 +34,26 @@ SET( SOURCES
     ${GENERATED}
     )
 
-# This will include Win/projectDef.cmake, X11/projectDef.cmake, Mac/projectDef 
+# This will include Win/projectDef.cmake, X11/projectDef.cmake, Mac/projectDef
 # depending on the platform
 include_platform()
 
+# add path where to look for cmake modules
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ";${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/")
 
 # include everything for gstreamer #######################################
-FIND_PACKAGE(LibXml2)
+find_package(LibXml2 REQUIRED)
+find_package(GStreamer REQUIRED)
 #FIND_PACKAGE(libgstinterfaces-0.10.so)
-include(FindGStreamer.cmake)
 
 link_directories(
     ${GSTREAMER_INCLUDE_DIRS}
-    "/usr/include/libxml2/"
+    ${LIBXML2_INCLUDE_DIRS}
 )
 include_directories(
     ${GSTREAMER_INCLUDE_DIRS}
-    "/usr/include/libxml2/"
+    ${LIBXML2_INCLUDE_DIRS}
 )
-#add_definitions(${GSTREAMER_DEFINITIONS})
 
 target_link_libraries(
     ${PROJECT_NAME}
