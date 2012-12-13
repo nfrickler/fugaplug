@@ -126,6 +126,8 @@ bool fugaplug::onWindowAttached(FB::AttachedEvent *evt, FB::PluginWindow * win)
 
     FB::PluginWindowX11* X11Window = dynamic_cast<FB::PluginWindowX11*>(win);
     GdkNativeWindow XID = X11Window->getWindow();
+    GdkDisplay* disp = gdk_display_get_default();
+    gdk_display_sync(disp);
     int x_window_id = (int) XID;
 
     std::string ip = "127.0.0.1";

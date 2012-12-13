@@ -5,6 +5,8 @@ This is a try to develop a browser plugin enabling p2p Webcamchat.
 
 <b>Plugin is not really working yet!</b>
 
+Currently displays the own webcam (on Ubuntu using Firefox, Opera or Chromium)
+
 Getting the source
 ==================
 
@@ -29,13 +31,16 @@ commands:
 
 Open the file
     fugaplug/build/projects/fugaplug/gen/FBControl.htm
-in your browser (e.g. chromium) to test the plugin.
+in your browser (e.g. firefox, chromium) to test the plugin.
+
+For Opera you have to copy the so-File to:
+    cp ../../bin/fugaplug/npfugaplug.so /usr/lib/opera/plugins/
 
 
 Debugging
 =========
 
-On Linux install the free chromium-browser and run it with the following command
-to easily debug the plugin.
+On Linux you can easily debug plugins using one of the two commands below.
 
+    firefox -d gdb
     chromium-browser --plugin-launcher='xterm -e gdb --args'
