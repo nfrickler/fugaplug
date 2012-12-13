@@ -79,6 +79,7 @@ private:
     FB::BrowserHostPtr m_host;
 
     std::string m_testString;
+
 };
 
 #endif // H_fugaplugAPI

@@ -133,10 +133,17 @@ bool fugaplug::onWindowAttached(FB::AttachedEvent *evt, FB::PluginWindow * win)
     std::string ip = "127.0.0.1";
     int port = 5000;
     std::string path = "";
-    FugaStreamer* streamer = new FugaStreamer(ip, port, path);
+    FugaStreamer* streamer = new FugaStreamer(
+	getMyParam("localIp"),
+	atoi(getMyParam("localPort").c_str()),
+	getMyParam("path")
+    );
     streamer->start();
 
-    FugaVideo* video = new FugaVideo(ip, port);
+    FugaVideo* video = new FugaVideo(
+	getMyParam("remoteIp"),
+	atoi(getMyParam("remotePort").c_str())
+    );
     video->start(x_window_id);
 
     return false;
@@ -146,4 +153,15 @@ bool fugaplug::onWindowDetached(FB::DetachedEvent *evt, FB::PluginWindow *)
 {
     // The window is about to be detached; act appropriately
     return false;
+}
+
+
+// get params from html
+std::string fugaplug::getMyParam(const std::string str) {
+    boost::optional<std::string> myParam = getParam(str);
+    if (myParam == NULL) {
+	std::cout << "Error: missing param: " << str << std::endl;
+	return "";
+    }
+    return *myParam;
 }

@@ -48,7 +48,6 @@ std::string fugaplugAPI::get_testString()
 {
     return m_testString;
 }
-
 void fugaplugAPI::set_testString(const std::string& val)
 {
     m_testString = val;

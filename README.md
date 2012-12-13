@@ -34,6 +34,7 @@ Open the file
 in your browser (e.g. firefox, chromium) to test the plugin.
 
 For Opera you have to copy the so-File to:
+
     cp ../../bin/fugaplug/npfugaplug.so /usr/lib/opera/plugins/
 
 
